@@ -1,0 +1,4 @@
+pip isntall CMake
+pip install dlib
+pip install face_recognition
+pip install pywhatkit 

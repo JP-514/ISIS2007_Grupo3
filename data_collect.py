@@ -2,9 +2,12 @@ import cv2
 import os
 import face_recognition
 import numpy as np
+import notification_Manager  as nm
+
+import threading
 
 video = cv2.VideoCapture(0)
-facedetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+#facedetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 count = 0 
 
 
@@ -24,20 +27,9 @@ def register_someone():
 def take_foto():
     face_recognition.load_image_file()
 
-def video_start():
+def send_notification(arg1, arg2):
+    nm.send_msg(arg1, arg2)
 
-    while True:
-        ret, frame =video.read()
-        faces =facedetect.detectMultiScale(frame,1.3,5)
-        for x,y,w,h in faces:
-            cv2.rectangle(frame, (x,y), (x+w,y+h),(255,0,0),3)
-
-        cv2.imshow("windowFrame",frame)
-        k=cv2.waitKey(1)
-        if k==ord('q'):
-            break
-    video.realease()
-    cv2.destroyAllWindows
 
 
 #####
@@ -80,6 +72,12 @@ while True:
         if True in matches:
             first_match_index = matches.index(True)
             name = known_face_names[first_match_index]
+            arg1= name
+            arg2 = "loc1"
+            t = threading.Thread(target=send_notification,args=(arg1,arg2))
+            t.start()
+
+            
 
   
         cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
