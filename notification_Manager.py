@@ -1,16 +1,31 @@
 import pywhatkit
 import time
-import threading
+import geocoder
 
-def send_msg(sospechoso,locacion):
+import datetime
+snd_list = {}# "juan___":present day
+def send_msg(sospechoso):
     t = time.localtime()
     hora = time.strftime("%H", t)
     minutos = time.strftime("%M", t)
+
+
+    g = geocoder.ip('me')
     print (hora)
     print(minutos)
-    msg = "Se ha detectado un "+sospechoso+" en "+locacion
-
+    print(g.latlng)
+    msg = "Se ha detectado un "+sospechoso+" en latitud:  "+str(g.latlng[0])+ " en longitud: "+ str (g.latlng[1])
 
                             #telephone num
-    pywhatkit.sendwhatmsg("+1000000000",msg,int(hora),int(minutos)+4)
+    pywhatkit.sendwhatmsg("+00000000",msg,int(hora),int(minutos)+4)
+    snd_list[sospechoso]= datetime.datetime.now()
+    
 
+
+
+
+def name_in_send_list():
+
+    return snd_list
+def ret_lst_send(sospechoso):
+    return snd_list[sospechoso]

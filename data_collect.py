@@ -3,13 +3,13 @@ import os
 import face_recognition
 import numpy as np
 import notification_Manager  as nm
-
+import datetime
 import threading
 
 video = cv2.VideoCapture(0)
 #facedetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 count = 0 
-
+sending_list =[]
 
 def register_someone():
 
@@ -27,10 +27,12 @@ def register_someone():
 def take_foto():
     face_recognition.load_image_file()
 
-def send_notification(arg1, arg2):
-    nm.send_msg(arg1, arg2)
+def send_notification(arg1):
+    nm.send_msg(arg1)
 
-
+def del_element_sendinig( i):
+    return sending_list.remove(i)
+    
 
 #####
 video = cv2.VideoCapture(0)
@@ -46,6 +48,7 @@ known_face_names = [
     "Barack Obama"
 ]
 
+lock = threading.Lock()
 
 count_fps = 0;
 while True:
@@ -72,10 +75,14 @@ while True:
         if True in matches:
             first_match_index = matches.index(True)
             name = known_face_names[first_match_index]
-            arg1= name
-            arg2 = "loc1"
-            t = threading.Thread(target=send_notification,args=(arg1,arg2))
-            t.start()
+            
+
+            if (name not in sending_list):
+                arg1= name
+                with lock:
+                    sending_list.append(name)
+                t = threading.Thread(target=send_notification,args=(arg1,))
+                t.start()
 
             
 
