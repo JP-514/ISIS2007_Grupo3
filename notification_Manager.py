@@ -17,7 +17,7 @@ def send_msg(sospechoso):
     msg = "Se ha detectado un "+sospechoso+" en latitud:  "+str(g.latlng[0])+ " en longitud: "+ str (g.latlng[1])
 
                             #telephone num
-    pywhatkit.sendwhatmsg("+00000000",msg,int(hora),int(minutos)+4)
+    pywhatkit.sendwhatmsg("+573053658375",msg,int(hora),int(minutos)+2, 3,True,2)
     snd_list[sospechoso]= datetime.datetime.now()
     
 

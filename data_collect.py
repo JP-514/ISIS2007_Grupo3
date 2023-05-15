@@ -40,12 +40,39 @@ video = cv2.VideoCapture(0)
 obama_image = face_recognition.load_image_file("./Imagenes/President_Barack_Obama.jpg")
 obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
 
-known_face_names = ["Barack Obama"]
+ao = face_recognition.load_image_file("./Imagenes/Antonio Ortiz.PNG")
+antonioOrtizfaceEncoding = face_recognition.face_encodings(ao)[0]
+
+Ivan_Perez = face_recognition.load_image_file("./Imagenes/Ivan Perez.PNG")
+Ivan_Perez_encoding = face_recognition.face_encodings(Ivan_Perez)[0]
+
+
+Juan_Marcos = face_recognition.load_image_file("./Imagenes/Juan Marcos.PNG")
+Juan_Marcos_encoding = face_recognition.face_encodings(Juan_Marcos)[0]
+
+Maria_Carmen  = face_recognition.load_image_file("./Imagenes/Maria Carmen Gallego.PNG")
+Maria_Carmen_encoding = face_recognition.face_encodings(Maria_Carmen)[0]
+
+Maria_Josefa_Iglesias  = face_recognition.load_image_file("./Imagenes/Maria Josefa Iglesias.PNG")
+Maria_Josefa_Iglesias_encoding = face_recognition.face_encodings(Maria_Josefa_Iglesias)[0]
+
+
 known_face_encodings = [
-    obama_face_encoding
+    obama_face_encoding,
+    antonioOrtizfaceEncoding,
+    Ivan_Perez_encoding,
+    Juan_Marcos_encoding,
+    Maria_Carmen_encoding,
+    Maria_Josefa_Iglesias_encoding
 ]
 known_face_names = [
-    "Barack Obama"
+    "Barack Obama",
+    "Antonio Ortiz",
+    "Ivan Perez",
+    "Juan Marcos",
+    "Maria Carmen Gallego",
+    "Maria Josefa Iglesias"
+
 ]
 
 lock = threading.Lock()

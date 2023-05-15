@@ -253,3 +253,18 @@ Time: 12:21
 Phone Number: +1000000000
 Message: Se ha detectado un Barack Obama en loc1
 --------------------
+Date: 11/5/2023
+Time: 14:29
+Phone Number: +00000000
+Message: Se ha detectado un Barack Obama en latitud: 4.6097 en longitud: -74.0817
+--------------------
+Date: 11/5/2023
+Time: 14:34
+Phone Number: +30536583755
+Message: Se ha detectado un Barack Obama en latitud: 4.6097 en longitud: -74.0817
+--------------------
+Date: 11/5/2023
+Time: 14:39
+Phone Number: +573053658375
+Message: Se ha detectado un Barack Obama en latitud: 4.6097 en longitud: -74.0817
+--------------------
